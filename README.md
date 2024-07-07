@@ -1,6 +1,6 @@
 ## Description
 
-Boilerplate for creating PIXI packages and publishing to NPM.
+Boilerplate for creating PIXI projects and publishing to NPM.
 
 ## Installation
 
