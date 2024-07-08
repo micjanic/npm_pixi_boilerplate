@@ -7,6 +7,9 @@
         "name": "Michael Janicki",
         "url": "https://github.com/micjanic"
     },
+    "bin": {
+        "create-boilerplate": "./bin/generate-app.cjs"
+    },
     "keywords": [],
     "files": [
         "dist",
