@@ -42,6 +42,12 @@ async function main() {
         packageJson = packageJson.replace(/npm_package_name/g, projectName)
         fs.writeFileSync(packageJsonPath, packageJson)
 
+        console.log('Updating vite.config.ts with project name...')
+        const viteConfigPath = path.join(projectPath, 'vite.config.ts')
+        let viteConfig = fs.readFileSync(viteConfigPath, 'utf8')
+        viteConfig = viteConfig.replace(/npm_package_name/g, projectName)
+        fs.writeFileSync(viteConfigPath, viteConfig)
+
         console.log('Installing dependencies...')
         execSync('npm install')
 

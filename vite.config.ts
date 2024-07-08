@@ -11,9 +11,12 @@ export default defineConfig({
     },
     build: {
         lib: {
-            entry: path.resolve(__dirname, 'src/components/CatBox.tsx'),
-            name: '@micjanic/catbox',
-            fileName: (format) => `catbox.${format}.js`,
+            entry: path.resolve(
+                __dirname,
+                'src/components/npm_package_name.tsx'
+            ),
+            name: '@micjanic/npm_package_name',
+            fileName: (format) => `npm_package_name.${format}.js`,
         },
         rollupOptions: {
             external: [
