@@ -1,5 +1,5 @@
 {
-    "name": "@micjanic/NPM_PACKAGE_NAME",
+    "name": "@micjanic/npm_package_name",
     "version": "1.0.0",
     "type": "module",
     "license": "MIT",
@@ -16,12 +16,12 @@
         "src/components/images",
         "README.md"
     ],
-    "main": "./dist/NPM_PACKAGE_NAME.umd.js",
-    "module": "./dist/NPM_PACKAGE_NAME.es.js",
+    "main": "./dist/npm_package_name.umd.js",
+    "module": "./dist/npm_package_name.es.js",
     "exports": {
         ".": {
-            "import": "./dist/NPM_PACKAGE_NAME.es.js",
-            "require": "./dist/NPM_PACKAGE_NAME.umd.js"
+            "import": "./dist/npm_package_name.es.js",
+            "require": "./dist/npm_package_name.umd.js"
         }
     },
     "browserslist": {

@@ -39,7 +39,7 @@ async function main() {
         console.log('Updating package.json with project name...')
         const packageJsonPath = path.join(projectPath, 'package.json')
         let packageJson = fs.readFileSync(packageJsonPath, 'utf8')
-        packageJson = packageJson.replace(/NPM_PACKAGE_NAME/g, projectName)
+        packageJson = packageJson.replace(/npm_package_name/g, projectName)
         fs.writeFileSync(packageJsonPath, packageJson)
 
         console.log('Installing dependencies...')
