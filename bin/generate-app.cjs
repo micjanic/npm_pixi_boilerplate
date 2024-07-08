@@ -39,13 +39,13 @@ async function main() {
         console.log('Updating package.json with project name...')
         const packageJsonPath = path.join(projectPath, 'package.json')
         let packageJson = fs.readFileSync(packageJsonPath, 'utf8')
-        packageJson = packageJson.replace(/npm_package_name/g, projectName)
+        packageJson = packageJson.replace(/create_pixi_project/g, projectName)
         fs.writeFileSync(packageJsonPath, packageJson)
 
         console.log('Updating vite.config.ts with project name...')
         const viteConfigPath = path.join(projectPath, 'vite.config.ts')
         let viteConfig = fs.readFileSync(viteConfigPath, 'utf8')
-        viteConfig = viteConfig.replace(/npm_package_name/g, projectName)
+        viteConfig = viteConfig.replace(/create_pixi_project/g, projectName)
         fs.writeFileSync(viteConfigPath, viteConfig)
 
         console.log('Installing dependencies...')

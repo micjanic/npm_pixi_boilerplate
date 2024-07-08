@@ -1,5 +1,5 @@
 {
-    "name": "@micjanic/create_pixi_project",
+    "name": "@micjanic/my-app",
     "version": "1.0.0",
     "type": "module",
     "license": "MIT",
@@ -16,12 +16,12 @@
         "src/components/images",
         "README.md"
     ],
-    "main": "./dist/create_pixi_project.umd.js",
-    "module": "./dist/create_pixi_project.es.js",
+    "main": "./dist/my-app.umd.js",
+    "module": "./dist/my-app.es.js",
     "exports": {
         ".": {
-            "import": "./dist/create_pixi_project.es.js",
-            "require": "./dist/create_pixi_project.umd.js"
+            "import": "./dist/my-app.es.js",
+            "require": "./dist/my-app.umd.js"
         }
     },
     "browserslist": {
