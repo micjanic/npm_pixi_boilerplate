@@ -48,9 +48,50 @@ async function main() {
         viteConfig = viteConfig.replace(/CreatePixiProject/g, projectName)
         fs.writeFileSync(viteConfigPath, viteConfig)
 
+        // this updates the entry component name to the one passed from the user
+        console.log('Updating entrypoint component with project name...')
+        const entryComponentPath = path.join(
+            projectPath,
+            'src',
+            'components',
+            'CreatePixiProject.tsx'
+        )
+
+        const projectNamePascalCase = projectName
+            .split(/[-_]/)
+            .map(
+                (word) =>
+                    word.charAt(0).toUpperCase() +
+                    word.slice(1).toLocaleLowerCase()
+            )
+            .join('')
+
+        let entryComponent = fs.readFileSync(entryComponentPath, 'utf8')
+        entryComponent = entryComponent.replace(
+            /CreatePixiProject/g,
+            projectNamePascalCase
+        )
+        fs.writeFileSync(entryComponentPath, entryComponent)
+
+        const newEntryComponentPath = path.join(
+            projectPath,
+            'src',
+            'components',
+            projectNamePascalCase
+        )
+
+        // this updates the entry component file name to the one passed from the user
+        try {
+            fs.renameSync(entryComponentPath, newEntryComponentPath)
+            console.log('File has been renamed.')
+        } catch (err) {
+            console.error('Error renaming the file:', err)
+        }
+
         console.log('Installing dependencies...')
         execSync('npm install')
 
+        // remove the git project here so it can be initialzed as a new repo
         console.log('Removing git and the bin folder from new project.')
         execSync('npx rimraf ./.git')
         fs.rmdirSync(path.join(projectPath, 'bin'), { recursive: true })
