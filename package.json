@@ -1,6 +1,6 @@
 {
     "name": "@micjanic/create_pixi_project",
-    "version": "1.0.0",
+    "version": "1.0.6",
     "type": "module",
     "license": "MIT",
     "author": {
@@ -38,7 +38,8 @@
     },
     "scripts": {
         "dev": "vite",
-        "build": "tsc && vite build",
+        "prebuild": "npm version patch --no-git-tag-version && git add package.json && git commit -m \"chore(release): bump version to %s\" && git push",
+        "build": "npm run prebuild && tsc && vite build",
         "publish": "npm run build && npm publish",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview"
