@@ -13,10 +13,10 @@ export default defineConfig({
         lib: {
             entry: path.resolve(
                 __dirname,
-                'src/components/create_pixi_project.tsx'
+                'src/components/CreatePixiProject.tsx'
             ),
-            name: '@micjanic/create_pixi_project',
-            fileName: (format) => `create_pixi_project.${format}.js`,
+            name: '@micjanic/CreatePixiProject',
+            fileName: (format) => `CreatePixiProject.${format}.js`,
         },
         rollupOptions: {
             external: [

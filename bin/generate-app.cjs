@@ -45,7 +45,7 @@ async function main() {
         console.log('Updating vite.config.ts with project name...')
         const viteConfigPath = path.join(projectPath, 'vite.config.ts')
         let viteConfig = fs.readFileSync(viteConfigPath, 'utf8')
-        viteConfig = viteConfig.replace(/create_pixi_project/g, projectName)
+        viteConfig = viteConfig.replace(/CreatePixiProject/g, projectName)
         fs.writeFileSync(viteConfigPath, viteConfig)
 
         console.log('Installing dependencies...')
