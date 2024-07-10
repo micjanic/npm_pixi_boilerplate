@@ -1,7 +1,8 @@
 import './App.css'
+import CreatePixiProject from './components/CreatePixiProject'
 
 function App() {
-    return <div>PIXI boilerplate for NPM</div>
+    return <CreatePixiProject />
 }
 
 export default App

@@ -31,6 +31,7 @@ try {
 
 async function main() {
     try {
+        //follow the console logs to see what each section is doing
         console.log('Downloading files...')
         execSync(`git clone --depth 1 ${git_repo} ${projectPath}`)
 
@@ -48,15 +49,13 @@ async function main() {
         viteConfig = viteConfig.replace(/CreatePixiProject/g, projectName)
         fs.writeFileSync(viteConfigPath, viteConfig)
 
-        // this updates the entry component name to the one passed from the user
-        console.log('Updating entrypoint component with project name...')
+        console.log('Replacing entrypoint text with project name...')
         const entryComponentPath = path.join(
             projectPath,
             'src',
             'components',
             'CreatePixiProject.tsx'
         )
-
         const projectNamePascalCase = projectName
             .split(/[-_]/)
             .map(
@@ -73,14 +72,13 @@ async function main() {
         )
         fs.writeFileSync(entryComponentPath, entryComponent)
 
+        console.log('Updating the entrypoint file name with project name...')
         const newEntryComponentPath = path.join(
             projectPath,
             'src',
             'components',
-            projectNamePascalCase
+            `${projectNamePascalCase}.tsx`
         )
-
-        // this updates the entry component file name to the one passed from the user
         try {
             fs.renameSync(entryComponentPath, newEntryComponentPath)
             console.log('File has been renamed.')
@@ -88,10 +86,18 @@ async function main() {
             console.error('Error renaming the file:', err)
         }
 
+        console.log('Updating the app to import new entrypoint component...')
+        const appComponentPath = path.join(projectPath, 'vite.config.ts')
+        let appComponent = fs.readFileSync(appComponentPath, 'utf8')
+        appComponent = appComponent.replace(
+            /CreatePixiProject/g,
+            projectNamePascalCase
+        )
+        fs.writeFileSync(appComponentPath, appComponent)
+
         console.log('Installing dependencies...')
         execSync('npm install')
 
-        // remove the git project here so it can be initialzed as a new repo
         console.log('Removing git and the bin folder from new project.')
         execSync('npx rimraf ./.git')
         fs.rmdirSync(path.join(projectPath, 'bin'), { recursive: true })
