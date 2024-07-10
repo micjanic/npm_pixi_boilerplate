@@ -87,7 +87,7 @@ async function main() {
         }
 
         console.log('Updating the app to import new entrypoint component...')
-        const appComponentPath = path.join(projectPath, 'vite.config.ts')
+        const appComponentPath = path.join(projectPath, 'src', 'App.tsx')
         let appComponent = fs.readFileSync(appComponentPath, 'utf8')
         appComponent = appComponent.replace(
             /CreatePixiProject/g,
