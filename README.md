@@ -4,6 +4,10 @@ Boilerplate for creating PIXI projects and publishing to NPM.
 
 ## Installation
 
+```
+npx @micjanic/create_pixi_project <project-name>
+```
+
 Dependencies:
 
 -   [pixi.js](https://www.npmjs.com/package/pixi.js) ("7.4.2")
