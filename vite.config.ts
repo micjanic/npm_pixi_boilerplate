@@ -19,13 +19,6 @@ export default defineConfig({
             fileName: (format) => `CreatePixiProject.${format}.js`,
         },
         rollupOptions: {
-            external: [
-                'react',
-                'react-dom',
-                '@pixi/react',
-                'pixi.js',
-                'tailwindcss',
-            ],
             output: {
                 assetFileNames: 'assets/[name].[hash][extname]',
                 globals: {

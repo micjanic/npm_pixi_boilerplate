@@ -1,12 +1,28 @@
-import { Text, Stage } from '@pixi/react'
-import { FC } from 'react'
+import { Application, extend } from '@pixi/react'
+import { Sprite, Graphics } from 'pixi.js'
+import { useCallback, useRef } from 'react'
 
-const CreatePixiProject: FC = () => {
+extend({
+    Sprite,
+    Graphics,
+})
+
+const App = () => {
+    const parentRef = useRef(null)
+    const draw = useCallback((graphics: Graphics) => {
+        graphics.clear()
+        graphics.setFillStyle({ color: 'red' })
+        graphics.rect(0, 0, 200, 100)
+        graphics.fill()
+    }, [])
+
     return (
-        <Stage width={500} height={300} options={{ backgroundColor: 0xdddddd }}>
-            <Text text="Pixi boilerplate" x={150} y={125} />
-        </Stage>
+        <div ref={parentRef} className="w-screen h-screen">
+            <Application resizeTo={parentRef}>
+                <pixiGraphics draw={draw} />
+            </Application>
+        </div>
     )
 }
 
-export default CreatePixiProject
+export default App
